@@ -537,6 +537,275 @@ img {
   transform: translateY(-.5rem);
 }
 
+
+
+
+/*===============/* Cart Popup styles ===============*/
+/* Cart Popup styles */
+.cart-popup {
+  position: fixed; /* Fixed to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: none; /* Initially hidden */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  z-index: 1000; /* Ensure it's above all other content */
+  overflow: auto; /* Prevent overflow issues */
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.cart-popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px; /* You can adjust this value */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+.cart-items-list p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #888;
+  padding: 1rem;
+}
+
+.cart-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cart-item-name {
+  font-weight: bold;
+}
+
+.cart-item-price {
+  color: green;
+}
+
+.remove-item-btn {
+  background: #ff0000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-item-btn:hover {
+  background: #cc0000;
+}
+
+.close-cart-popup {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-cart-popup:hover {
+  background-color: #ff4500;
+}
+
+
+/* Style for the checkout button */
+.checkout-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: green; /* Sets the background color of the button */
+  color: white; /* Sets the text color to white */
+  font-size: 16px; /* Sets the font size of the button text */
+   /* Adds padding inside the button for better spacing */
+  border: none; /* Removes the default border of the button */
+  border-radius: 5px;
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+
+}
+
+/* Hover effect for the checkout button */
+.checkout-btn:hover {
+  background-color: darkgreen; /* Changes the background color when the button is hovered over */
+}
+
+
+/* Checkout Form Styles */
+.checkout {
+   padding: 40px 20px;
+   background-color: #f9f9f9;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkout h2 {
+   text-align: center;
+   font-size: 2rem;
+   margin-bottom: 20px;
+}
+
+.checkout form {
+   max-width: 600px;
+   margin: 0 auto;
+   background: white;
+   padding: 20px;
+   border-radius: 8px;
+}
+
+.checkout label {
+   font-size: 1rem;
+   font-weight: bold;
+   margin-bottom: 8px;
+}
+
+.checkout input, .checkout textarea, .checkout select {
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 20px;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+}
+
+.checkout button {
+   width: 100%;
+   padding: 12px;
+   background-color: #ff5722;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   font-size: 1.2rem;
+   cursor: pointer;
+}
+
+.checkout button:hover {
+   background-color: #e64a19;
+}
+
+/* Order summary styles */
+#order-summary {
+   background-color: #f2f2f2;
+   padding: 15px;
+   border-radius: 8px;
+   margin-bottom: 20px;
+}
+
+#order-items-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+#order-items-list li {
+   font-size: 1rem;
+   margin-bottom: 8px;
+}
+
+#total-price {
+   font-size: 1.2rem;
+   font-weight: bold;
+   color: #ff5722;
+}
+
+
+/*=======================Checkoutpage=====================//
+/* Checkout Form Styles */
+.checkout {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkout h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.checkout form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.checkout label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.checkout input, .checkout textarea, .checkout select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.checkout button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.checkout button:hover {
+  background-color: #e64a19;
+}
+
+/* Order summary styles */
+#order-summary {
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#order-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.order-item-image {
+  max-width: 100px; /* Or whatever size you prefer */
+  height: auto;
+  display: block;
+  margin-right: 10px;
+}
+
+#order-items-list li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+#total-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff5722;
+}
+
 /*=============== CONTACT ===============*/
 .contact__container {
   position: relative;
@@ -1009,6 +1278,43 @@ img {
     bottom: 1.5rem;
     padding: 6px;
   }
+
+  
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .cart-popup-content {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .cart-item {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .cart-item-name,
+  .cart-item-price {
+    font-size: 14px;
+  }
+
+  .cart-total {
+    font-size: 16px;
+  }
+}
+
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+
 
   .contact__container {
     width: initial;
