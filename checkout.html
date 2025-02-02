@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== FAVICON ===============-->
+   <link rel="shortcut icon" href="assets/img/logo2.svg" type="image/x-icon">
+
+   <!--=============== REMIXICONS ===============-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.css">
+
+   <!--=============== SWIPER CSS ===============-->
+   <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <title>Checkout - QuickPizza</title>
+</head>
+<body>
+
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+         <nav class="nav container">
+            <a href="#" class="nav__logo">
+               <img src="assets/img/logo2.svg" alt="image">
+               QuickPizza
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list">
+                  <li><a href="#home" class="nav__link active-link">Home</a></li>
+                  <li><a href="#about" class="nav__link">About Us</a></li>
+                  <li><a href="#popular" class="nav__link">Popular</a></li>
+                  <li><a href="#products" class="nav__link">Products</a></li>
+                  <li><a href="#contact" class="nav__link">Contact</a></li>
+                  <li><a href="#" class="nav__link" id="view-cart-btn">
+                     <i class="ri-shopping-cart-line"></i> Cart (<span id="cart-count">0</span>)
+                  </a></li>
+               </ul>
+               <!-- Close button -->
+               <div class="nav__close" id="nav-close">
+                  <i class="ri-close-large-line"></i>
+               </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+               <i class="ri-apps-2-fill"></i>
+            </div>
+         </nav>
+      </header>
+
+   <!--==================== CHECKOUT FORM ====================-->
+   <section class="checkout section">
+      <div class="container">
+         <h2 class="section__title">Checkout</h2>
+         <form id="checkout-form" action="/submit-order" method="POST">
+            <!-- Name -->
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <!-- Address -->
+            <label for="address">Shipping Address</label>
+            <textarea id="address" name="address" placeholder="Enter your shipping address" required></textarea>
+
+            <!-- Payment Method -->
+            <label for="payment">Payment Method</label>
+            <select id="payment" name="payment" required>
+               <option value="credit-card">Credit Card</option>
+               <option value="paypal">PayPal</option>
+               <option value="cash-on-delivery">Cash on Delivery</option>
+            </select>
+
+            <!-- Order Summary -->
+            <div id="order-summary">
+               <h3>Order Summary</h3>
+               <ul id="order-items-list">
+                  <!-- This will be dynamically populated with items from the cart -->
+               </ul>
+               <p id="total-price">Total: €0.00</p>
+            </div>
+
+            <button type="submit" class="btn checkout-btn">Proceed to Payment</button>
+         </form>
+      </div>
+   </section>
+
+   <!--==================== FOOTER ====================-->
+   <footer class="footer">
+         <div class="footer__container container grid">
+            <a href="#" class="footer__logo">QuickPizza</a>
+
+            <div class="footer__content grid">
+               <div>
+                  <h3 class="footer__title">Social</h3>
+                  <div class="footer__social">
+                     <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-facebook-circle-fill"></i>
+                     </a>
+                     <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-instagram-fill"></i>
+                     </a>
+                     <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-twitter-x-fill"></i>
+                     </a>
+                  </div>
+               </div>
+
+               <div>
+                  <h3 class="footer__title">Payment Methods</h3>
+                  <div class="footer__pay">
+                     <img src="assets/img/footer-card-1.png" alt="image" class="footer__pay-card">
+                     <img src="assets/img/footer-card-2.png" alt="image" class="footer__pay-card">
+                     <img src="assets/img/footer-card-3.png" alt="image" class="footer__pay-card">
+                     <img src="assets/img/footer-card-4.png" alt="image" class="footer__pay-card">
+                  </div>
+               </div>
+
+               <div>
+                  <h3 class="footer__title">Subscribe For Discounts</h3>
+                  <form action="" class="footer__form">
+                     <input type="email" placeholder="Email" class="footer__input">
+                     <button type="submit" class="footer__button button">Subscribe</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+
+         <div class="footer__policy">
+            <a href="#" class="footer__link">Terms & Agreements</a>
+            <a href="#" class="footer__link">Privacy Policy</a>
+         </div>
+
+         <span class="footer__copy">
+            &#169; All Rights Reserved By Hus&Co.
+         </span>
+      </footer>
+
+   <!--=============== JS ===============-->
+   <script src="assets/js/main.js"></script>
+
+   <!--=============== checkout.js ===============-->
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         // Get cart data from localStorage
+         const cart = JSON.parse(localStorage.getItem('cartData')) || [];
+
+         // Display cart items in order summary
+         const orderItemsList = document.getElementById('order-items-list');
+         const totalPriceElement = document.getElementById('total-price');
+
+         let total = 0;
+         cart.forEach(item => {
+            const li = document.createElement('li');
+            li.innerText = `${item.name} - €${item.price}`;
+            orderItemsList.appendChild(li);
+            total += parseFloat(item.price);
+         });
+
+         // Update total price
+         totalPriceElement.innerText = `Total: €${total.toFixed(2)}`;
+
+         // Handle form submission (You can adjust this to integrate with your backend)
+         const checkoutForm = document.getElementById('checkout-form');
+         checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const paymentMethod = document.getElementById('payment').value;
+
+            // Send the order details to your backend (replace with actual submission logic)
+            const orderDetails = {
+               name,
+               address,
+               paymentMethod,
+               cart,
+               total
+            };
+
+            console.log('Order Details:', orderDetails); // For debugging
+
+            // Example: Send the order data to a backend
+            // fetch('/submit-order', {
+            //    method: 'POST',
+            //    headers: {
+            //       'Content-Type': 'application/json'
+            //    },
+            //    body: JSON.stringify(orderDetails)
+            // }).then(response => response.json())
+            //   .then(data => {
+            //      console.log('Order submitted:', data);
+            //   }).catch(error => {
+            //      console.error('Error:', error);
+            //   });
+
+            // Clear cart after order submission
+            localStorage.removeItem('cartData'); 
+            alert('Thank you for your order!');
+            window.location.href = '/'; // Redirect to homepage or a confirmation page
+         });
+      });
+   </script>
+   
+</body>
+</html>
